@@ -34,7 +34,7 @@ public class CalculadoraController {
 
     @PostMapping("/calcular-sobra")
     @Operation(summary = "Calcula a sobra de estoque após venda", description = "Recebe o estoque inicial e a venda, retornando o estoque atualizado após a venda.")
-    public ResponseEntity<Boi> calcularSobra(@RequestBody EstoqueRequestDTO estoqueRequestDTO) {
+    public ResponseEntity<Boi> calcularSobra(@Valid @RequestBody EstoqueRequestDTO estoqueRequestDTO) {
         Boi resultado = calculadoraService.calcularSobra(
                 estoqueRequestDTO.getBois(),
                 estoqueRequestDTO.getBandas(),
