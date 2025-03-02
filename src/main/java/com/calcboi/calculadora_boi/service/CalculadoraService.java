@@ -3,8 +3,6 @@ package com.calcboi.calculadora_boi.service;
 import com.calcboi.calculadora_boi.model.Boi;
 import org.springframework.stereotype.Service;
 
-import static java.lang.Math.abs;
-
 @Service
 public class CalculadoraService {
     private int calcularBandas(int dianteiros, int traseiros) {
