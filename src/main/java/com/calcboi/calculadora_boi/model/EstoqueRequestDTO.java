@@ -10,5 +10,6 @@ public class EstoqueRequestDTO {
     private int traseiros;
     private Boi venda;
 
-    public EstoqueRequestDTO(){}
+    public EstoqueRequestDTO(){
+    }
 }

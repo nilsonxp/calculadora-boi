@@ -69,6 +69,10 @@ public class CalculadoraService {
         int vendaTotalDianteiros = boiVendas.getBois() * 2 + boiVendas.getBandas() + boiVendas.getDianteiros();
         int vendaTotalTraseiros = boiVendas.getBois() * 2 + boiVendas.getBandas() + boiVendas.getTraseiros();
 
+        if (vendaTotalDianteiros > estoqueTotalDianteiros || vendaTotalTraseiros > estoqueTotalTraseiros) {
+            throw new IllegalArgumentException("A quantidade vendida não pode ser maior que o estoque disponível.");
+        }
+
         return calcularVendas(0, 0, (estoqueTotalDianteiros-vendaTotalDianteiros), (estoqueTotalTraseiros-vendaTotalTraseiros));
     }
 }

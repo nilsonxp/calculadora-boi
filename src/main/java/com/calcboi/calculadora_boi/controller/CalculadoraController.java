@@ -4,6 +4,7 @@ import com.calcboi.calculadora_boi.model.Boi;
 import com.calcboi.calculadora_boi.model.EstoqueRequestDTO;
 import com.calcboi.calculadora_boi.model.VendaRequestDTO;
 import com.calcboi.calculadora_boi.service.CalculadoraService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ public class CalculadoraController {
     private CalculadoraService calculadoraService;
 
     @PostMapping("/calcular-venda")
-    public ResponseEntity<Boi> calcularVenda(@RequestBody VendaRequestDTO vendaRequestDTO) {
+    public ResponseEntity<Boi> calcularVenda(@Valid @RequestBody VendaRequestDTO vendaRequestDTO) {
         Boi resultado = calculadoraService.calcularVendas(
                 vendaRequestDTO.getBois(),
                 vendaRequestDTO.getBandas(),
