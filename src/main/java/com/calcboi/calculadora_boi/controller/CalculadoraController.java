@@ -4,6 +4,8 @@ import com.calcboi.calculadora_boi.model.Boi;
 import com.calcboi.calculadora_boi.model.EstoqueRequestDTO;
 import com.calcboi.calculadora_boi.model.VendaRequestDTO;
 import com.calcboi.calculadora_boi.service.CalculadoraService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,12 +14,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Tag(name = "Calculadora de Bois", description = "API para cálculo de vendas e sobras de bois")
 public class CalculadoraController {
 
     @Autowired
     private CalculadoraService calculadoraService;
 
     @PostMapping("/calcular-venda")
+    @Operation(summary = "Calcula a conversão de bois vendidos", description = "Recebe uma venda e retorna a conversão de bois, bandas, dianteiros e traseiros.")
     public ResponseEntity<Boi> calcularVenda(@Valid @RequestBody VendaRequestDTO vendaRequestDTO) {
         Boi resultado = calculadoraService.calcularVendas(
                 vendaRequestDTO.getBois(),
@@ -29,6 +33,7 @@ public class CalculadoraController {
     }
 
     @PostMapping("/calcular-sobra")
+    @Operation(summary = "Calcula a sobra de estoque após venda", description = "Recebe o estoque inicial e a venda, retornando o estoque atualizado após a venda.")
     public ResponseEntity<Boi> calcularSobra(@RequestBody EstoqueRequestDTO estoqueRequestDTO) {
         Boi resultado = calculadoraService.calcularSobra(
                 estoqueRequestDTO.getBois(),
