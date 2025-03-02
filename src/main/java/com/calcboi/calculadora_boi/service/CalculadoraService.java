@@ -63,15 +63,12 @@ public class CalculadoraService {
             throw new IllegalArgumentException("Os dados da venda não podem ser nulos.");
         }
 
-        // Normaliza os valores do estoque antes da subtração
-        Boi boiSobra = calcularVendas(estoqueBois, estoqueBandas, estoqueDianteiros, estoqueTraseiros);
+        int estoqueTotalDianteiros = estoqueBois * 2 + estoqueBandas + estoqueDianteiros;
+        int estoqueTotalTraseiros = estoqueBois * 2 + estoqueBandas + estoqueTraseiros;
 
-        // Garante que os valores do estoque não fiquem negativos
-        boiSobra.setBois(Math.max(0, boiSobra.getBois() - boiVendas.getBois()));
-        boiSobra.setBandas(Math.max(0, boiSobra.getBandas() - boiVendas.getBandas()));
-        boiSobra.setDianteiros(Math.max(0, boiSobra.getDianteiros() - boiVendas.getDianteiros()));
-        boiSobra.setTraseiros(Math.max(0, boiSobra.getTraseiros() - boiVendas.getTraseiros()));
+        int vendaTotalDianteiros = boiVendas.getBois() * 2 + boiVendas.getBandas() + boiVendas.getDianteiros();
+        int vendaTotalTraseiros = boiVendas.getBois() * 2 + boiVendas.getBandas() + boiVendas.getTraseiros();
 
-        return boiSobra;
+        return calcularVendas(0, 0, (estoqueTotalDianteiros-vendaTotalDianteiros), (estoqueTotalTraseiros-vendaTotalTraseiros));
     }
 }
