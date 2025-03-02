@@ -1,6 +1,7 @@
 package com.calcboi.calculadora_boi.controller;
 
 import com.calcboi.calculadora_boi.model.Boi;
+import com.calcboi.calculadora_boi.model.EstoqueRequestDTO;
 import com.calcboi.calculadora_boi.model.VendaRequestDTO;
 import com.calcboi.calculadora_boi.service.CalculadoraService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,18 @@ public class CalculadoraController {
                 vendaRequestDTO.getBandas(),
                 vendaRequestDTO.getDianteiros(),
                 vendaRequestDTO.getTraseiros()
+        );
+        return ResponseEntity.ok(resultado);
+    }
+
+    @PostMapping("/calcular-sobra")
+    public ResponseEntity<Boi> calcularSobra(@RequestBody EstoqueRequestDTO estoqueRequestDTO) {
+        Boi resultado = calculadoraService.calcularSobra(
+                estoqueRequestDTO.getBois(),
+                estoqueRequestDTO.getBandas(),
+                estoqueRequestDTO.getDianteiros(),
+                estoqueRequestDTO.getTraseiros(),
+                estoqueRequestDTO.getVenda()
         );
         return ResponseEntity.ok(resultado);
     }
