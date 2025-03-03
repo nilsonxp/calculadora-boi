@@ -11,7 +11,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(@NonNull CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://seu-frontend.netlify.app") // Permita apenas o frontend correto
+                .allowedOrigins("https://calculadora-boi-production.up.railway.app") // Permita apenas o frontend correto
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
