@@ -24,7 +24,7 @@ public class CalculadoraService {
         // tratamento de bandas e bois
         bandas += calcularBandas(dianteiros, traseiros);
 
-        if (bandas > 2) {
+        if (bandas >= 2) {
             if (bandas % 2 == 0) {
                 bois += bandas / 2;
                 bandas = 0;
