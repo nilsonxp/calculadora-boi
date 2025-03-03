@@ -1,0 +1,6 @@
+#target/
+*.iml
+*.log
+*.md
+target/Dockerfile
+.dockerignore
