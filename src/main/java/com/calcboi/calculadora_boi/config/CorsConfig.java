@@ -11,7 +11,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(@NonNull CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://192.168.100.55:3000", "https://seu-frontend.netlify.app") // Adicione o IP local e o domínio final
+                .allowedOrigins("http://192.168.100.55:3000", "https://nelorave.netlify.app/") // Adicione o IP local e o domínio final
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
